@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="mermaid">
+        sequenceDiagram
+        participant browser
+        participant server
+
+        browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa
+        activate server
+        server-->>browser: HTML document
+        deactivate server
+
+        browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/main.css
+        activate server
+        server-->>browser: CSS file
+        deactivate server
+
+        browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/spa.js
+        activate server
+        server-->>browser: JavaScript file
+        deactivate server
+
+        Note right of browser: the browser executes the Js code that fetches the JSON from the server
+
+        browser->>server: GET https://studies.cs.helsinki.fi/exampleapp/data.json
+        activate server
+        server -->> browser: JSON: [{"content": "","date": "2024-02-06T15:57:07.358Z"},...]
+        deactivate server
+
+
+    </div>
+
+
+
+
+
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true });
+    </script>
+</body>
+</html>
